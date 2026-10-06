@@ -1,4 +1,5 @@
 import { useAnecdotesActions } from "../store";
+import anedoteService from "../services/anecdotes"
 
 const AnecdoteForm = () => {
   const { addAnecdote } = useAnecdotesActions()
@@ -9,11 +10,9 @@ const AnecdoteForm = () => {
     event.preventDefault()
     const content = event.target.anecdote.value
 
-    addAnecdote({
-      content,
-      id: getId(),
-      votes: 0
-    })
+    const newAnecdote = await anecdoteService.createNew(content)
+    addAnecdote(newAnecdote)
+    event.target.anecdote.value = ''
   }
 
   return (
