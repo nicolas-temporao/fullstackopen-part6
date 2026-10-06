@@ -4,8 +4,6 @@ import anedoteService from "../services/anecdotes"
 const AnecdoteForm = () => {
   const { addAnecdote } = useAnecdotesActions()
 
-  const getId = () => Number((Math.random() * 1000000).toFixed(0))
-
   const handleSubmit = (event) => {
     event.preventDefault()
     const content = event.target.anecdote.value

@@ -24,7 +24,7 @@ const createNew = async (content) => {
         },
         body: JSON.stringify(newAnecdote)
     })
-    return response.json
+    return response.json()
 }
 
 export default { getAll, createNew }
