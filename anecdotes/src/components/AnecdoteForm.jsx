@@ -1,10 +1,10 @@
 import { useAnecdotesActions } from "../store";
-import anedoteService from "../services/anecdotes"
+import anecdoteService from "../services/anecdotes"
 
 const AnecdoteForm = () => {
   const { addAnecdote } = useAnecdotesActions()
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const content = event.target.anecdote.value
 

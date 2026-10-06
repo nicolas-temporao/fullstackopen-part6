@@ -1,12 +1,13 @@
+import { useEffect } from 'react'
 import AnecdoteForm from './components/AnecdoteForm'
 import AnecdoteList from './components/AnecdoteList'
 import Filter from './components/Filter'
-import { useAnecdoteActions } from './store'
+import { useAnecdotesActions } from './store'
 import anecdoteService from './services/anecdotes'
 
 
 const App = () => {
-  const { initialize } = useAnecdoteActions()
+  const { initialize } = useAnecdotesActions()
   useEffect(() => {
     anecdoteService.getAll().then(anecdotes => initialize(anecdotes))
   }, [initialize])
