@@ -27,4 +27,20 @@ const createNew = async (content) => {
     return response.json()
 }
 
-export default { getAll, createNew }
+const addVote = async () => {
+    const updatedAnecdote = {
+        ...anecdote,
+        votes: anecdote.votes + 1
+    }
+    
+    const response = await fetch(`http://localhost:3001/anecdotes/${anecdote.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedAnecdote)
+    })
+    return response.json()
+}
+
+export default { getAll, createNew, addVote }

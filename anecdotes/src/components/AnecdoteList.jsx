@@ -3,10 +3,11 @@ import { useAnecdotes, useAnecdotesActions, useFilter } from "../store";
 const AnecdoteList = () => {
   const anecdotes = useAnecdotes()
   const filter = useFilter()
-  const { addVote } = useAnecdotesActions()
+  const { updateAnecdote } = useAnecdotesActions()
 
-  const vote = (id) => {
-    addVote(id)
+  const vote = async(anecdote) => {
+    const updatedAnecdote = await anecdoteService.addVote(anecdote)
+    updateAnecdote(updatedAnecdote)
   }
   const visibleAnecdotes = anecdotes
     .filter(anecdote =>
@@ -20,7 +21,7 @@ const AnecdoteList = () => {
               <div>{anecdote.content}</div>
               <div>
                   has {anecdote.votes}
-                  <button onClick={() => vote(anecdote.id)}>vote</button>
+                  <button onClick={() => vote(anecdote)}>vote</button>
               </div>
           </div>
         ))}

@@ -13,6 +13,12 @@ const useAnecdoteStore = create((set) => ({
     addAnecdote: anecdote=> set(
       state => ({ anecdotes: state.anecdotes.concat(anecdote)})
     ),
+    updateAnecdote: updatedAnecdote => set(state=> ({
+      anecdotes: state.anecdotes.map(anecdote =>
+        anecdote.id === updatedAnecdote.id ?
+        updatedAnecdote : anecdote
+      )
+    })),
     setFilter: value=> set(() => ({filter: value})),
     initialize: anecdotes => set(()=>({ anecdotes }))
   }
