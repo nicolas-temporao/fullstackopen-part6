@@ -27,7 +27,7 @@ const createNew = async (content) => {
     return response.json()
 }
 
-const addVote = async () => {
+const addVote = async (anecdote) => {
     const updatedAnecdote = {
         ...anecdote,
         votes: anecdote.votes + 1

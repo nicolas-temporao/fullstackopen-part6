@@ -4,6 +4,7 @@ import { create } from 'zustand'
 const useAnecdoteStore = create((set) => ({
   anecdotes: [],
   filter: '',
+  notification: null,
   actions: {
     addVote: id => set(state => ({
       anecdotes: state.anecdotes.map(anecdote=>
@@ -20,10 +21,12 @@ const useAnecdoteStore = create((set) => ({
       )
     })),
     setFilter: value=> set(() => ({filter: value})),
-    initialize: anecdotes => set(()=>({ anecdotes }))
+    initialize: anecdotes => set(()=>({ anecdotes })),
+    setNotification: message => set(() => ({ nofitication: message }))
   }
 }))
 
 export const useAnecdotes = () => useAnecdoteStore((state) => state.anecdotes)
 export const useAnecdotesActions = () => useAnecdoteStore((state) => state.actions)
 export const useFilter = () => useAnecdoteStore((state)=> state.filter)
+export const useNotification = () => useAnecdoteStore(state => state.notification)

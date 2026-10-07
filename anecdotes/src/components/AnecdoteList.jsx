@@ -1,13 +1,20 @@
 import { useAnecdotes, useAnecdotesActions, useFilter } from "../store";
+import anecdoteService from '../services/anecdotes'
 
 const AnecdoteList = () => {
   const anecdotes = useAnecdotes()
   const filter = useFilter()
-  const { updateAnecdote } = useAnecdotesActions()
+  const { updateAnecdote, setNotification } = useAnecdotesActions()
 
   const vote = async(anecdote) => {
     const updatedAnecdote = await anecdoteService.addVote(anecdote)
     updateAnecdote(updatedAnecdote)
+
+    setNotification(`You voted '${anecdote.content}'`)
+    
+    setTimeout(() => {
+      setNotification(null)
+    }, 5000)
   }
   const visibleAnecdotes = anecdotes
     .filter(anecdote =>

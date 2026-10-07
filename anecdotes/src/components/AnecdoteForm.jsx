@@ -10,6 +10,13 @@ const AnecdoteForm = () => {
 
     const newAnecdote = await anecdoteService.createNew(content)
     addAnecdote(newAnecdote)
+
+    setNotification(`You created '${content}'`)
+    
+    setTimeout(() => {
+      setNotification(null)
+    }, 5000)
+
     event.target.anecdote.value = ''
   }
 

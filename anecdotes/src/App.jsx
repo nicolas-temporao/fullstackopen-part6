@@ -4,6 +4,7 @@ import AnecdoteList from './components/AnecdoteList'
 import Filter from './components/Filter'
 import { useAnecdotesActions } from './store'
 import anecdoteService from './services/anecdotes'
+import Notification from './components/Notification'
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
 
   return (
     <div>
+      <Notification />
       <Filter />
       <h2>Anecdotes</h2>
       <AnecdoteList />
