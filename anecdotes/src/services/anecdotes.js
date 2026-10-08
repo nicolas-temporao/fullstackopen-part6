@@ -33,7 +33,7 @@ const addVote = async (anecdote) => {
         votes: anecdote.votes + 1
     }
     
-    const response = await fetch(`http://localhost:3001/anecdotes/${anecdote.id}`, {
+    const response = await fetch(`${baseUrl}/${anecdote.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -43,4 +43,11 @@ const addVote = async (anecdote) => {
     return response.json()
 }
 
-export default { getAll, createNew, addVote }
+const remove = async (anecdote) => {
+    const response = await fetch(`${baseUrl}/${anecdote.id}`, {
+        method: 'DELETE',
+    })
+    return response
+}
+
+export default { getAll, createNew, addVote, remove }
