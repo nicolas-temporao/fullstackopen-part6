@@ -23,7 +23,7 @@ const AnecdoteList = () => {
     await anecdoteService.remove(anecdote)
     deleteAnecdote(anecdote)
 
-    setNotification(`Deleted '${anecdote.content}`)
+    setNotification(`Deleted '${anecdote.content}'`)
     setTimeout(() => {
       setNotification(null)
     }, 5000)
