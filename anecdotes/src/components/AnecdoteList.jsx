@@ -44,7 +44,7 @@ const AnecdoteList = () => {
                   has {anecdote.votes}
                   <button onClick={() => vote(anecdote)}>vote</button>
                   {anecdote.votes === 0 && (
-                    <button onClick={() => handleDelete(anecdote.id)}>
+                    <button onClick={() => handleDelete(anecdote)}>
                       delete
                     </button>
                   )}
