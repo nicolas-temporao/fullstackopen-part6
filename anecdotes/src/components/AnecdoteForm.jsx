@@ -1,9 +1,11 @@
 import { useAnecdotesActions } from "../store";
 import anecdoteService from "../services/anecdotes"
+import useNotificationStore from "../notificationStore";
 
 const AnecdoteForm = () => {
   const { addAnecdote } = useAnecdotesActions()
-
+  const setNotification = useNotificationStore(state => state.setNotification)
+  
   const handleSubmit = async (event) => {
     event.preventDefault()
     const content = event.target.anecdote.value

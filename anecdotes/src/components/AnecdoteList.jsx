@@ -12,7 +12,7 @@ const AnecdoteList = () => {
     const updatedAnecdote = await anecdoteService.addVote(anecdote)
     updateAnecdote(updatedAnecdote)
 
-    setNotification(`You voted '${anecdote.content}'`)
+    setNotification(`you voted '${anecdote.content}'`)
     
     setTimeout(() => {
       setNotification(null)
