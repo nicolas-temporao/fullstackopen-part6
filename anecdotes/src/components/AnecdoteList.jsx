@@ -1,16 +1,14 @@
-import { useAnecdotes, useAnecdotesActions, useFilter } from "../store";
+import { useAnecdotes, useAnecdotesActions } from "../store";
 import anecdoteService from '../services/anecdotes'
 import useNotificationStore from "../notificationStore";
 
 const AnecdoteList = () => {
   const anecdotes = useAnecdotes()
-  const filter = useFilter()
-  const { updateAnecdote, deleteAnecdote } = useAnecdotesActions()
+  const { updateAnecdote, deleteAnecdote, addVote } = useAnecdotesActions()
   const setNotification = useNotificationStore(state => state.setNotification)
 
   const vote = async(anecdote) => {
-    const updatedAnecdote = await anecdoteService.addVote(anecdote)
-    updateAnecdote(updatedAnecdote)
+    await addVote(anecdote)
 
     setNotification(`you voted '${anecdote.content}'`)
     
@@ -29,15 +27,9 @@ const AnecdoteList = () => {
     }, 5000)
   }
 
-
-  const visibleAnecdotes = anecdotes
-    .filter(anecdote =>
-      anecdote.content.toLowerCase().includes(filter.toLowerCase()))
-        .toSorted((a,b) => b.votes - a.votes)
-
   return (
     <div>
-      {visibleAnecdotes.map((anecdote) => (
+      {anecdotes.map((anecdote) => (
           <div key={anecdote.id}>
               <div>{anecdote.content}</div> 
               <div>
