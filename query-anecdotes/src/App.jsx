@@ -7,7 +7,7 @@ const App = () => {
   const { anecdotes, isPending, isError, addVote } = useAnecdotes()
 
   if (isError) {
-    return <div>Error in anecdote service</div>
+    return <div>anecdote service not available due to problems in server</div>
   }
   if (isPending) {
     return <div>Loading anecdotes...</div>
