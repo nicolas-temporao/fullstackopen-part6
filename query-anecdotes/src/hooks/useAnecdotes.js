@@ -8,7 +8,7 @@ export const useAnecdotes = () => {
         queryKey: ['anecdotes'],
         queryFn : getAnecdotes,
         retry: false,
-        refreshOnWindowFocus: false
+        refetchOnWindowFocus: false
       })
 
     const newAnecdoteMutation = useMutation({
@@ -28,7 +28,7 @@ export const useAnecdotes = () => {
         anecdotes: result.data,
         isPending: result.isPending,
         isError: result.isError,
-        addAnecdote: (content) => newAnecdoteMutation({ content, votes: 0 }),
+        addAnecdote: (content) => newAnecdoteMutation.mutate({ content, votes: 0 }),
         addVote: (anecdote) => voteAnecdoteMutation.mutate({...anecdote, votes: anecdote.votes + 1})
     }
 }
