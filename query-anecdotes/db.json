@@ -3,7 +3,7 @@
     {
       "id": "5614fa0f-c7bf-40d6-a9e0-f77050c33f08",
       "content": "Make it work, then make it fast",
-      "votes": 0
+      "votes": 2
     },
     {
       "id": "e3bfff01-9cae-41d5-8bc1-ba0266a084e9",
@@ -24,6 +24,11 @@
       "id": "460a4812-30f3-4ee6-a803-42ae20000b99",
       "content": "Real artists ship code",
       "votes": 7
+    },
+    {
+      "content": "testtt",
+      "votes": 0,
+      "id": "1c7cc0d6-68cb-42fa-881a-4884efd16b01"
     }
   ]
 }
